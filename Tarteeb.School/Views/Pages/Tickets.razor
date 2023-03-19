@@ -1,0 +1,37 @@
+﻿@page "/tickets"
+
+<PageTitle>Tickets</PageTitle>
+<h3>Tickets</h3>
+
+@if (tickets == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Deadline</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ForEach Items="tickets" Context="ticket">
+                <tr>
+                    <td>@ticket.Title</td>
+                    <td>@ticket.Description</td>
+                    <td>@ticket.Priority</td>
+                    <td>@ticket.Deadline.ToString(format: "dd-MMM (yyyy)")</td>
+                    <td>@ticket.Status</td>
+                </tr>
+            </ForEach>
+        </tbody>
+    </table>
+}
+
+
+
