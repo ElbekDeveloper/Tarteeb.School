@@ -1,20 +1,19 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Tarteeb.School.Models.Tickets;
-using Tarteeb.School.Services.Tickets;
+using Tarteeb.School.Models.TicketViews;
+using Tarteeb.School.Services.Views.TicketViews;
 
 namespace Tarteeb.School.Views.Pages
 {
     public partial class Tickets
     {
         [Inject]
-        public ITicketService TicketService { get; set; }
+        public ITicketViewService TicketViewService { get; set; }
 
-        private List<Ticket> tickets;
+        private List<TicketView> ticketViews;
 
         protected override async Task OnInitializedAsync() =>
-            tickets = await TicketService.RetrieveAllTicketsAsync();
+            ticketViews = await TicketViewService.RetrieveTicketViewAsync();
     }
 }

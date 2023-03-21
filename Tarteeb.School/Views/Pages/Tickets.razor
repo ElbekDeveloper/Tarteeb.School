@@ -3,7 +3,7 @@
 <PageTitle>Tickets</PageTitle>
 <h3>Tickets</h3>
 
-@if (tickets == null)
+@if (ticketViews == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -20,13 +20,13 @@ else
             </tr>
         </thead>
         <tbody>
-            <ForEach Items="tickets" Context="ticket">
+            <ForEach Items="ticketViews" Context="ticketView">
                 <tr>
-                    <td>@ticket.Title</td>
-                    <td>@ticket.Description</td>
-                    <td>@ticket.Priority</td>
-                    <td>@ticket.Deadline.ToString(format: "dd-MMM (yyyy)")</td>
-                    <td>@ticket.Status</td>
+                    <td>@ticketView.Title</td>
+                    <td>@ticketView.Description</td>
+                    <td>@ticketView.Priority</td>
+                    <td>@ticketView.Deadline.ToString(format: "dd-MMM (yyyy)")</td>
+                    <td>@ticketView.Status</td>
                 </tr>
             </ForEach>
         </tbody>
