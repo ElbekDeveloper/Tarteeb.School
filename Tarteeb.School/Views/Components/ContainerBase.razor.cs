@@ -13,16 +13,12 @@ using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.JSInterop;
 using Tarteeb.School;
 using Tarteeb.School.Views.Components;
-using Tarteeb.School.Views.Pages;
 
-namespace Tarteeb.School.Views.Semantics
+namespace Tarteeb.School.Views.Components
 {
-    public partial class ForEach<T> : ComponentBase
+    public partial class ContainerBase
     {
         [Parameter]
-        public RenderFragment<T> ChildContent { get; set; }
-
-        [Parameter]
-        public IEnumerable<T> Items { get; set; }
+        public RenderFragment ChildContent { get; set; }
     }
 }

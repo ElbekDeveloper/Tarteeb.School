@@ -1,0 +1,47 @@
+﻿@using PrettyBlazor
+@using Tarteeb.School.Models.TicketViews;
+@using Tarteeb.School.Views.Bases
+
+<ContainerBase>
+    <TableBase @ref=TicketsTable>
+        <thead>
+            <TableRowBase>
+                <TableHeadBase @ref=TitleLabelCell
+                                    Value=@nameof(TicketView.Title) />
+
+            <TableHeadBase @ref=DescriptionLabelCell
+                                Value=@nameof(TicketView.Description) />
+
+            <TableHeadBase @ref=DeadlineLabelCell
+                               Value=@nameof(TicketView.Deadline) />
+
+            <TableHeadBase @ref=DeadlineLabelCell
+                           Value=@nameof(TicketView.Status) />
+
+            <TableHeadBase @ref=PriorityLabelCell
+                           Value=@nameof(TicketView.Priority) />
+            </TableRowBase>
+        </thead>
+        <tbody>
+            <Iterations Items="Tickets" Context="Ticket">
+                <TableRowBase>
+                    <TableCellBase @ref=TitleValueCell
+                                    Value=@Ticket.Title />
+
+                    <TableCellBase @ref=DescriptionValueCell
+                                    Value=@Ticket.Description />
+
+                    <TableCellBase @ref=DeadlineValueCell
+                               Value=@Ticket.Deadline.ToString(format: "dd-MMM (yyyy)") />
+
+                <TableCellBase @ref=StatusValueCell
+                               Value=@Ticket.Status.ToString() />
+
+                <TableCellBase @ref=PriorityValueCell
+                               Value=@Ticket.Priority.ToString() />
+
+                </TableRowBase>
+            </Iterations>
+        </tbody>
+    </TableBase>
+</ContainerBase>

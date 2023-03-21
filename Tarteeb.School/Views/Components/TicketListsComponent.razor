@@ -1,0 +1,22 @@
+﻿@using PrettyBlazor
+@using Tarteeb.School.Models.States;
+@using Tarteeb.School.Views.Bases
+
+<Condition Evaluation=@(CurrentState is State.Loading)>
+    <Match>
+        <LabelBase Text="Loading..." />
+    </Match>
+</Condition>
+
+
+<Condition Evaluation=@(CurrentState is State.Content)>
+    <Match>
+            <TicketComponent Tickets="TicketViews" />
+    </Match>
+</Condition>
+
+<Condition Evaluation=@(CurrentState is State.Error)>
+    <Match>
+        <LabelBase Text="An error has occured, contact support." />
+    </Match>
+</Condition>
