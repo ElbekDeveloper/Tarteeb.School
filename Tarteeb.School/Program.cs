@@ -1,6 +1,8 @@
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Syncfusion.Blazor;
 using Tarteeb.School.Brokers.ApiBrokers;
 using Tarteeb.School.Brokers.DateTimes;
 using Tarteeb.School.Brokers.Loggings;
@@ -19,7 +21,7 @@ namespace Tarteeb.School
             builder.Services.AddRazorPages(options =>
                 options.RootDirectory = "/Views/Pages"
             );
-
+            builder.Services.AddSyncfusionBlazor();
             builder.Services.AddHttpClient();
             builder.Services.AddServerSideBlazor();
             AddBrokers(builder);
