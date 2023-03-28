@@ -1,0 +1,31 @@
+﻿@using PrettyBlazor
+@using Tarteeb.School.Models.States;
+@using Tarteeb.School.Views.Bases
+
+<Condition Evaluation=@(CurrentState is State.Loading)>
+    <Match>
+        <LabelBase Text="Loading..." />
+    </Match>
+</Condition>
+
+<Condition Evaluation=@(CurrentState is State.Content)>
+    <Match>
+        <ContainerBase>
+            <TextBoxBase @bind-value=@UserView.FirstName @ref=FirstnameTexboxBase Placeholder="Firstname" CssClass="form-control" />
+            <TextBoxBase @bind-value=@UserView.LastName @ref=LastnameTexboxBase Placeholder="Lastname" CssClass="form-control" />
+            <TextBoxBase @bind-value=@UserView.PhoneNumber @ref=PhoneNumberTexboxBase Placeholder="Phone number" CssClass="form-control" />
+            <TextBoxBase @bind-value=@UserView.Email @ref=EmailTexboxBase Placeholder="Email" CssClass="form-control" />
+            <DateTimePickerBase @bind-value=@UserView.BirthDate @ref=BirthDateDateTimePickerBase CssClass="form-control" />
+            <TextBoxBase @bind-value=@UserView.Password @ref=PasswordTexboxBase Placeholder="Passwrod" CssClass="form-control" />
+            <TextBoxBase @bind-value=@UserView.GitHubUsername @ref=GitHubUsernameTexboxBase Placeholder="Telegram username" CssClass="form-control" />
+            <TextBoxBase @bind-value=@UserView.TelegramUsername @ref=TelegramUsernameTexboxBase Placeholder="Github username" CssClass="form-control" />
+            <CustomButtonBase Label="Register" OnClick="@RegisterUserAsync" />
+        </ContainerBase>
+    </Match>
+</Condition>
+
+<Condition Evaluation=@(CurrentState is State.Error)>
+    <Match>
+        <LabelBase Text="An error has occured, contact support." />
+    </Match>
+</Condition>

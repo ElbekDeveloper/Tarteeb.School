@@ -1,4 +1,3 @@
-using FluentAssertions.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +8,7 @@ using Tarteeb.School.Brokers.Loggings;
 using Tarteeb.School.Services.Foundations.Users;
 using Tarteeb.School.Services.Tickets;
 using Tarteeb.School.Services.Views.TicketViews;
+using Tarteeb.School.Services.Views.UserViews;
 
 namespace Tarteeb.School
 {
@@ -26,6 +26,7 @@ namespace Tarteeb.School
             builder.Services.AddServerSideBlazor();
             AddBrokers(builder);
             AddServices(builder);
+            AddViewServices(builder);
 
             var app = builder.Build();
 
@@ -47,8 +48,13 @@ namespace Tarteeb.School
         private static void AddServices(WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<ITicketService, TicketService>();
-            builder.Services.AddTransient<ITicketViewService, TicketViewService>();
             builder.Services.AddTransient<IUserService, UserService>();
+        }
+
+        private static void AddViewServices(WebApplicationBuilder builder)
+        {
+            builder.Services.AddTransient<ITicketViewService, TicketViewService>();
+            builder.Services.AddTransient<IUserViewService, UserViewService>();
         }
 
         private static void AddBrokers(WebApplicationBuilder builder)
